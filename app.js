@@ -30,20 +30,23 @@ app.use("/api/message", messageRoute);
 // ------------- Deployment------------
 
 const __dirname1 = path.resolve();
-if (process.env.NODE_ENV === "production") {
-  const rootPath = path.resolve(__dirname, "..");
-  app.use(express.static(path.join(rootPath, "/frontend/build")));
+// if (process.env.NODE_ENV === "production") {
+//   const rootPath = path.resolve(__dirname, "..");
+//   app.use(express.static(path.join(rootPath, "/frontend/build")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(rootPath, "frontend", "build", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running");
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(rootPath, "frontend", "build", "index.html"));
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("API is running");
+//   });
+// }
 // ------------- Deployment------------
 
+app.get("/", (req, res) => {
+    res.send("API is running");
+  });
 app.use(notFound);
 app.use(errorHandler);
 const start = async () => {
