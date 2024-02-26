@@ -10,6 +10,15 @@ const { errorHandler, notFound } = require("./middlerware/errorMiddlerware");
 require("dotenv").config();
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+
+app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allow the specified HTTP methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow the specified headers
+  next();
+});
+
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
