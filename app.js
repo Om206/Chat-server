@@ -13,7 +13,7 @@ const { Server } = require("socket.io");
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-application-five-eta.vercel.app",
+    origin: ["http://localhost:3000", "https://chat-application-five-eta.vercel.app"],
   },
 });
 
