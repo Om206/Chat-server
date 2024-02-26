@@ -10,7 +10,7 @@ const { errorHandler, notFound } = require("./middlerware/errorMiddlerware");
 require("dotenv").config();
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-
+const cors = require('cors');
 app.use(cors());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
